@@ -18,6 +18,7 @@ void Block::moveUp(char *up) {
 }
 
 void Block::moveUp() {
+
 	int tmpBlockArr[4][4] = { 0, };
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
@@ -29,6 +30,7 @@ void Block::moveUp() {
 			blockArr[i][3 - j] = tmpBlockArr[j][i];
 		}
 	}
+
 }
 
 void Block::moveDown() {
@@ -36,8 +38,10 @@ void Block::moveDown() {
 }
 
 void Block::changeShape() {
+
 	blockPos.x = 5; blockPos.y = 1;
 	blockPos.z = blockPos.k;
+
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			blockArr[i][j] = blockShapeArr[blockPos.z][i][j];
@@ -62,13 +66,23 @@ Pos Block::getPos() {
 	return blockPos;
 }
 
+void Block::setPosX(int _x) {
+	blockPos.x = _x;
+}
+
+void Block::setPosY(int _y) {
+	blockPos.y = _y;
+}
+
 void Block::drawNextBlock() {
 	int t;
+
 	for (int y = 0; y < 4; y++) {
 		for (int x = 0; x < 4; x++) {
 			gotoXY(16 + x, 4 + y); puts((t = blockShapeArr[blockPos.k][y][x]) ? "бр" : " ");
 		}
 	}
+
 	resetFontColor();
 }
 

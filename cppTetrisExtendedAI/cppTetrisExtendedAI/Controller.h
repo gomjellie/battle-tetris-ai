@@ -19,7 +19,7 @@ public:
 	void timeControl();
 	//static void gotoXY(unsigned short _x, unsigned short _y);
 
-private:
+protected:
 	Block block;
 	Board board;
 	unsigned int timeCnt;

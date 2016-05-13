@@ -4,9 +4,11 @@
 #include <iostream>
 #include <cstdlib>
 #include "Interface.h"
+
 typedef struct _Pos {
 	int x, y, z, k;
 }Pos;
+
 
 class Block :public Interface {
 public:
@@ -20,6 +22,8 @@ public:
 	void randomizeShape();
 	int getBlock(int _y, int _x);
 	Pos getPos();
+	void setPosX(int _x);
+
 	void setBlock(int _y, int _x, int _val);
 	void drawNextBlock();
 	//void gotoXY(unsigned short _x, unsigned short _y);
