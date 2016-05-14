@@ -24,13 +24,14 @@ public:
 	Pos getPos();
 	void setPosX(int _x);
 	void setPosY(int _y);
-
 	void setBlock(int _y, int _x, int _val);
 	void drawNextBlock();
+	void setCoordStartPos(int _y, int _x);
 	//void gotoXY(unsigned short _x, unsigned short _y);
 
 private:
 	Pos blockPos;
+	COORD coordStartPos;
 	int blockArr[4][4];
 	const int blockShapeArr[7][4][4] = {
 		{

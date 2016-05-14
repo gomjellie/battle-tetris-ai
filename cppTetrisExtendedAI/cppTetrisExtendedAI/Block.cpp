@@ -74,12 +74,16 @@ void Block::setPosY(int _y) {
 	blockPos.y = _y;
 }
 
+void Block::setCoordStartPos(int _y, int _x) {
+	coordStartPos.Y = _y;
+	coordStartPos.X = _x;
+}
 void Block::drawNextBlock() {
 	int t;
 
 	for (int y = 0; y < 4; y++) {
 		for (int x = 0; x < 4; x++) {
-			gotoXY(16 + x, 4 + y); puts((t = blockShapeArr[blockPos.k][y][x]) ? "бр" : " ");
+			gotoXY(coordStartPos.X +16 + x, coordStartPos.Y+4 + y); puts((t = blockShapeArr[blockPos.k][y][x]) ? "бр" : " ");
 		}
 	}
 

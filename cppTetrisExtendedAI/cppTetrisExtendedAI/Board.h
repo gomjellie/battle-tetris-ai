@@ -10,7 +10,7 @@
 class Board :public Interface {
 public:
 	Board();
-	Board(int startY, int startX);
+	void setBoardStart(int startY, int startX);
 	void setBoard(int _y, int _x, int _val);
 	int getBoard(int _y, int _x);
 	//void gotoXY(unsigned short _x, unsigned short _y);
@@ -28,7 +28,7 @@ public:
 		EMPTY = 0,
 		BLOCK = 1,
 		X_LEN = 14,
-		Y_LEN = 26
+		Y_LEN = 30
 	};
 
 private:

@@ -8,18 +8,11 @@ Board::Board() {
 				boardArr[y][x] = BLOCK;
 		}
 	}
-	startPos.x = 0;
+	startPos.x = 0,startPos.y=0;
+	setConsoleSize(GetStdHandle(STD_OUTPUT_HANDLE), 160, 40);
 }
 
-Board::Board(int startY, int startX) {
-	std::memset(boardArr, 0, sizeof(int)*X_LEN*Y_LEN);
-	for (int x = 0; x < X_LEN; x++) {
-		for (int y = 0; y < Y_LEN; y++) {
-			if ((x == 0 || x == X_LEN - 1) || (y == 0 || y == Y_LEN - 1)) {
-				boardArr[y][x] = BLOCK;
-			}
-		}
-	}
+void Board::setBoardStart(int startY, int startX) {
 	startPos.y = startY; startPos.x = startX;
 }
 
@@ -36,13 +29,13 @@ void Board::drawBoard() {
 	for (int y = 1; y < Y_LEN - 1; y++) {
 		for (int x = 1; x < X_LEN - 1; x++) {
 			if ((boardVal=boardArr[y][x]) != EMPTY) {
-				gotoXY(x, y);
+				gotoXY(startPos.x+x, startPos.y+y);
 				setFontColor(boardVal + 3);
 				puts("□");
 				//printf("%s", colour[boardArr[y][x]-1]);
 			}
 			else if (boardVal == EMPTY) {
-				gotoXY(x, y); std::cout << " ";
+				gotoXY(startPos.x+x, startPos.y+y); std::cout << " ";
 			}
 		}
 	}
@@ -54,7 +47,7 @@ void Board::drawBoarder() {//테두리만 출력
 	for (int y = 0; y < Y_LEN; y++) {
 		for (int x = 0; x < X_LEN; x++) {
 			if (boardArr[y][x] != EMPTY) {
-				gotoXY(x, y); puts("□");
+				gotoXY(startPos.x+x, startPos.y+y); puts("□");
 				//printf("%s", colour[boardArr[y][x]]);
 			}
 		}

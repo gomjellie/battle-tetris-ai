@@ -1,6 +1,7 @@
 #ifndef __INTERFACE_H__
 #define __INTERFACE_H__
 #include "Color.h"
+#include "Windows.h"
 
 class Interface :public Color {
 public:
@@ -14,6 +15,7 @@ public:
 		"мн",
 		"к≈"
 	};
+	void setConsoleSize(HANDLE hBuffer,int y, int x);
 };
 
 #endif // !__INTERFACE_H__

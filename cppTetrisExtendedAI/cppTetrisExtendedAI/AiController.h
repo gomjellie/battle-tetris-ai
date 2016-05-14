@@ -16,13 +16,13 @@ public:
 	PosAi findIdealPosition();
 	int getIdealPoint();
 	int getClearLinePoint();
-	void playGame1();//override
+	void playGame();//override
 	int getAdjacentPoint();
 	int getMinusPoint();
 	int nxt;
 
 private:
 	PosAi targetPos;
-	int aispeed;//초기화 해줘야됨!! 어디에 넣을지 모르겠음
+	double aispeed;//초기화 해줘야됨!! 어디에 넣을지 모르겠음
 };
 #endif // !__AI_CONTROLLER_H__

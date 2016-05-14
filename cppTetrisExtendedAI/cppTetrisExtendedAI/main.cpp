@@ -35,7 +35,7 @@ int main(void) {
 	AiController comGame;
 
 	comGame.gameInit();
-	comGame.playGame1();
+	comGame.playGame();
 	//game.gameInit();
 	//game.playGame();
 
