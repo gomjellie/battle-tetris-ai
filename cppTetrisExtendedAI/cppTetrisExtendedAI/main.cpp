@@ -34,14 +34,16 @@ SOFTWARE.*/
 
 void thread1() {
 	Controller humGame;
-
+	Sleep(1000);
 	humGame.gameInit();
+
 	humGame.playGame();
 }
 void thread2() {
 	AiController* comGame= new AiController();
 
 	comGame->gameInit();
+	Sleep(1000);
 	comGame->playGame();
 }
 	

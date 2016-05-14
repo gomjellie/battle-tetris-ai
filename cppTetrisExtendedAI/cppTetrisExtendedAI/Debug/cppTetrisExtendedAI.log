@@ -1,9 +1,2 @@
-﻿  main.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Interface.cpp
-  Controller.cpp
-  Board.cpp
-  Block.cpp
-  AiController.cpp
-  cppTetrisExtendedAI.vcxproj -> C:\Users\gomjellie\Documents\GitHub\cppTetrisExtendedAI\cppTetrisExtendedAI\Debug\cppTetrisExtendedAI.exe
+﻿  AiController.cpp
+  cppTetrisExtendedAI.vcxproj -> C:\Users\gomjellie\Documents\GitHub\cppTetrisExtendedAI\cppTetrisExtendedAI\cppTetrisExtendedAI\Debug\cppTetrisExtendedAI.exe

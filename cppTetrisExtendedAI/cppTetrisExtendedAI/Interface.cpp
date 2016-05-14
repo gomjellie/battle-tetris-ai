@@ -1,10 +1,20 @@
 #include "Interface.h"
 #include <stdio.h>
 
+#include <thread>
+#include <mutex>
+#include <chrono>
+std::mutex m;
+using namespace std::literals;
 void Interface::gotoXY(unsigned short _x, unsigned short _y) {
+	m.lock();
 	COORD CursorPosition = { 10+ 2*_x,  2+_y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), CursorPosition);
 	//printf("\033[%dd\033[%dG", 2 + _y, 10 + 2 * _x);
+	
+	m.unlock();
+	std::this_thread::sleep_for(1ns);
+	
 }
 
 void Interface::setConsoleSize(HANDLE hBuffer, short cx, short cy) {

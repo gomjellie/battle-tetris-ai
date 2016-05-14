@@ -9,6 +9,7 @@ AiController::AiController() {
 	aispeed = 0.1;
 }
 
+//@Override
 void AiController::playGame() {
 	block.randomizeShape();
 	while (key != QUIT) {
@@ -53,7 +54,7 @@ void AiController::playGame() {
 		board.drawBoard();
 		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
 		board.eraseBlockOffBoard(block);
-		Sleep(1);//Thread test용
+		Sleep(2);//Thread test용
 	}
 }
 
@@ -258,4 +259,3 @@ int AiController::getClearLinePoint() {
 	return clearLinePoint;
 }
 
-//@Override

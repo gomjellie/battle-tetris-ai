@@ -81,7 +81,7 @@ void Controller::stack() {
 	board.writeBlockOnBoard(block);
 	block.changeShape();
 	board.clearLine();
-	board.gotoXY(13, 13); printf("%d", block.getPos().z);
+	//board.gotoXY(13, 13); printf("%d", block.getPos().z);
 	block.randomizeShape();
 }
 
