@@ -1,24 +1,39 @@
 #include "AiController.h"
 
+AiController::AiController() {
+	Controller();
+	targetPos.x = 5; targetPos.y = 1; targetPos.rotation = 0; targetPos.rotation = 0;
+	aispeed = 15;
+}
+
 void AiController::animationEffect(const double _time) {
-	board.writeBlockOnBoard();
+	board.writeBlockOnBoard(block);
 	board.drawBoard();
 	board.eraseBlockOffBoard(block);
 	Sleep(_time*speed);
 }
 
 void AiController::moveToBestPos() {
-	int i,T;
-	for (i = 0; i < posAi.rotation; i++) {
+	int i;
+	block.setPosY(1); block.setPosX(5);
+	for (i = 0; i < targetPos.rotation; i++) {
 		block.moveUp();
+		if (collision())
+			nxt = QUIT;
 		animationEffect(7);
 	}
-	while (block.getPos().x != posAi.x) {
-		if (block.getPos().x > posAi.x) {
+	while (block.getPos().x != targetPos.x) {
+		if (block.getPos().x > targetPos.x) {
 			block.moveLeft();
+			if (collision())
+				nxt = QUIT;
+			animationEffect(4);
 		}
-		else if (block.getPos().x < posAi.x) {
+		else if (block.getPos().x < targetPos.x) {
 			block.moveRight();
+			if (collision())
+				nxt = QUIT;
+			animationEffect(4);
 		}
 	}
 	animationEffect(4);
@@ -27,7 +42,7 @@ void AiController::moveToBestPos() {
 		block.moveDown();
 		//block.moveUp("up");없어도 될듯
 	}
-	//block.stack();이것도
+	stack();//이것도
 	return;
 }
 
@@ -40,7 +55,7 @@ PosAi AiController::findIdealPosition() {
 
 	for (rotation = 0; rotation < 4; rotation++) {
 		for (block.setPosX(0), i = 0; 1; block.moveRight()) {
-			block.setPosX(1);
+			block.setPosY(1);
 
 			if (i == 0 && collision()) {
 				block.setPosX(1); i++;
@@ -51,8 +66,8 @@ PosAi AiController::findIdealPosition() {
 			while (!collision()) {
 				block.moveDown();
 			}
-			//block.moveUp("up");
-			board.writeBlockOnBoard();
+			block.moveUp("up");
+			board.writeBlockOnBoard(block);
 			plusScore = 4 * getIdealPoint() + 5 * getClearLinePoint() + 5 * getAdjacentPoint();
 			minusScore = 17 * getMinusPoint();
 			totalScore = plusScore - minusScore;
@@ -82,3 +97,128 @@ PosAi AiController::findIdealPosition() {
 	return position[bestRotation];
 }
 
+int AiController::getIdealPoint() {
+	int boardIdealPoint = 0;
+	int x = 0, y = 0;
+	
+	for (y = 2; y < board.Y_LEN - 1; y++) {
+		for (x = 1; x < board.X_LEN - 1; x++) {
+			if (board.getBoard(y, x) != 0) {
+				boardIdealPoint += y;
+			}
+		}
+	}
+	
+	return boardIdealPoint;
+}
+
+int AiController::getAdjacentPoint() {
+	int adjacentPoint = 0;
+	int x = 0, y = 0;
+
+	for (y = 0; y < 4; y++) {
+		for (x = 0; x < 4; x++) {
+
+			if (board.getBoard(block.getPos().y + y, block.getPos().x + x - 1) != 0) {
+				adjacentPoint += block.getPos().y + y;
+			}
+
+			if (board.getBoard(block.getPos().y + y, block.getPos().x + x + 1) != 0) {
+				adjacentPoint += block.getPos().y + y;
+
+			}
+		}
+	}
+	return adjacentPoint;
+}
+
+int AiController::getMinusPoint() {
+	int boardMinusPoint = 0;
+	int x = 0, y = 0;
+	int height = 0;
+
+	for (x = 1; x < board.X_LEN -1; x++) {
+		
+		for (y = 2; board.getBoard(y, x) == 0; y++) {
+			height = y;
+		}
+		
+		for (y = board.Y_LEN - 1; y > height; y--) {
+			if (board.getBoard(y, x) == 0) {
+				boardMinusPoint += y;
+			}
+		}
+
+	}
+	return boardMinusPoint;
+}
+
+int AiController::getClearLinePoint() {
+	int clearLinePoint = 0;
+	int x = 0, y = 0;
+	int count = 0;
+	
+	for (y = block.getPos().y; y < block.getPos().y + 4; y++) {
+		for (x = 1, count = 0; x < board.X_LEN - 1; x++) {
+			if (board.getBoard(y, x) != 0) {
+				count++;
+			}
+		}
+
+		if (count == board.X_LEN - 2) {
+			clearLinePoint += y*(board.X_LEN - 2);
+		}
+	}
+	
+	//		if (count == board.X_LEN - 3) {}
+	
+	return clearLinePoint;
+}
+
+//@Override
+void AiController::playGame1() {
+	block.randomizeShape();
+	while (key!=QUIT) {
+		//timeControl(); //key입력받는게 들어있음
+		//어차피 키입력 안받으니까 없앰 시간제어도 안함
+
+		//switch (key)
+		//{
+		//case RIGHT:
+		//	block.moveRight();
+		//	if (collision())
+		//		block.moveLeft();
+		//	break;
+		//case LEFT:
+		//	block.moveLeft();
+		//	if (collision())
+		//		block.moveRight();
+		//	break;
+		//case UP:
+		//	block.moveUp();
+		//	if (collision()) {
+		//		block.moveUp(); block.moveUp(); block.moveUp();
+		//	}
+		//	break;
+		//case DOWN:
+		//	block.moveDown();
+		//	if (collision())
+		//		stack();
+		//	break;
+		//case SPACE:
+		//	while (!collision()) {
+		//		block.moveDown();
+		//	}stack();
+		//	break;
+		//default:
+		//	break;
+		//}
+		targetPos = findIdealPosition();
+		moveToBestPos();
+
+		board.writeBlockOnBoard(block);
+		board.drawBoard();
+		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
+		board.eraseBlockOffBoard(block);
+	}
+}

@@ -23,6 +23,7 @@ public:
 	int getBlock(int _y, int _x);
 	Pos getPos();
 	void setPosX(int _x);
+	void setPosY(int _y);
 
 	void setBlock(int _y, int _x, int _val);
 	void drawNextBlock();

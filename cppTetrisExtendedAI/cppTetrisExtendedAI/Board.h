@@ -14,7 +14,7 @@ public:
 	void setBoard(int _y, int _x, int _val);
 	int getBoard(int _y, int _x);
 	//void gotoXY(unsigned short _x, unsigned short _y);
-	void stack();
+	//void stack();
 	void drawBoard();
 	void drawBoarder();//테두리만 출력
 	void clearLine();
@@ -22,7 +22,7 @@ public:
 	void writeBlockOnBoard(Block &block);
 	void eraseBlockOffBoard(Block &block);
 
-private:
+
 	enum boardEnum
 	{
 		EMPTY = 0,
@@ -30,6 +30,8 @@ private:
 		X_LEN = 14,
 		Y_LEN = 26
 	};
+
+private:
 	int boardArr[Y_LEN][X_LEN];
 	int score;
 	Pos startPos;

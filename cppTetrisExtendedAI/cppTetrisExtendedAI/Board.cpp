@@ -1,6 +1,5 @@
 #include "Board.h"
 
-
 Board::Board() {
 	std::memset(boardArr, 0, sizeof(int)*X_LEN*Y_LEN);
 	for (int x = 0; x < X_LEN; x++) {
@@ -9,6 +8,7 @@ Board::Board() {
 				boardArr[y][x] = BLOCK;
 		}
 	}
+	startPos.x = 0;
 }
 
 Board::Board(int startY, int startX) {
@@ -61,10 +61,10 @@ void Board::drawBoarder() {//테두리만 출력
 	}
 	resetFontColor();
 }
-
-void Board::stack() {
-	//controller에 있음
-}
+//
+//void Board::stack() {
+//	//controller에 있음
+//}
 
 void Board::writeBlockOnBoard(Block &block) {
 	for (int y = 0; y < 4; y++) {
