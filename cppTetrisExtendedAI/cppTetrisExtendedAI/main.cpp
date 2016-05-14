@@ -30,14 +30,41 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-int main(void) {
-	//Controller game;
-	AiController comGame;
+#include <thread>
 
-	comGame.gameInit();
-	comGame.playGame();
-	//game.gameInit();
-	//game.playGame();
+void thread1() {
+	Controller humGame;
+
+	humGame.gameInit();
+	humGame.playGame();
+}
+void thread2() {
+	AiController* comGame= new AiController();
+
+	comGame->gameInit();
+	comGame->playGame();
+}
+	
+int main(void) {
+	Sound::playNyanNyanSong();
+	//Controller* humGame = new Controller();
+	std::thread t1(thread1);
+	std::thread t2(thread2);
+	//humGame->gameInit();
+	//humGame->playGame();
+	t1.join();
+	t2.join();
+
+
+	//AiController comGame;
+
+	//comGame.gameInit();
+	//comGame.playGame();
+
+
+	//std::thread t1(thread1);
+	
+	//t1.join();
 
 	return 0;
 }

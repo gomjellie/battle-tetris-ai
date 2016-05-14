@@ -53,6 +53,7 @@ void AiController::playGame() {
 		board.drawBoard();
 		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
 		board.eraseBlockOffBoard(block);
+		Sleep(1);//Thread test용
 	}
 }
 
@@ -88,7 +89,7 @@ void AiController::moveToBestPos() {
 	}
 	animationEffect(2);
 	while (!collision()) {
-		animationEffect(0.5);
+		//animationEffect(0);
 		block.moveDown();
 	}
 	stack();

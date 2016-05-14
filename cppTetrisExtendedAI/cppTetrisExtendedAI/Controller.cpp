@@ -4,6 +4,8 @@ Controller::Controller() {
 	key = '\0';
 	timeCnt = 0;
 	speed = 75;
+	board.setBoardStart(2, 10);
+	block.setCoordStartPos(2, 10);
 	//default
 }
 
@@ -11,7 +13,7 @@ void Controller::gameInit() {
 	srand((unsigned int)time(NULL));
 	board.drawBoarder();
 	block.changeShape();
-	Sound::playNyanNyanSong();
+	//Sound::playNyanNyanSong();
 }
 
 void Controller::scanKey() {
@@ -86,7 +88,7 @@ void Controller::stack() {
 void Controller::timeControl() {
 	while (true) {
 		if (_kbhit()) {
-			scanKey(); timeCnt++; break;
+			scanKey(); timeCnt += 3; break;
 		}
 		else {
 			Sleep(1); timeCnt++;

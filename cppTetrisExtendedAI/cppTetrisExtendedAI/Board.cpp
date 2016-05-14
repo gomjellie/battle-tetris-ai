@@ -8,7 +8,7 @@ Board::Board() {
 				boardArr[y][x] = BLOCK;
 		}
 	}
-	startPos.x = 0,startPos.y=0;
+	startPos.x = 1,startPos.y=1;
 	setConsoleSize(GetStdHandle(STD_OUTPUT_HANDLE), 160, 40);
 }
 
