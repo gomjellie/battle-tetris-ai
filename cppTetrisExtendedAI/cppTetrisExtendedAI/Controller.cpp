@@ -11,6 +11,7 @@ void Controller::gameInit() {
 	srand((unsigned int)time(NULL));
 	board.drawBoarder();
 	block.changeShape();
+	Sound::playNyanNyanSong();
 }
 
 void Controller::scanKey() {

@@ -149,6 +149,7 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Sound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AiController.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Interface.h" />
+    <ClInclude Include="Sound.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
