@@ -1,20 +1,35 @@
 #include "Interface.h"
 #include <stdio.h>
 
-#include <thread>
-#include <mutex>
-#include <chrono>
+//#include <thread>
+//#include <mutex>
+//#include <chrono>
 std::mutex m;
 using namespace std::literals;
 void Interface::gotoXY(unsigned short _x, unsigned short _y) {
-	m.lock();
-	COORD CursorPosition = { 10+ 2*_x,  2+_y };
+	//m.lock();
+	COORD CursorPosition = { 10 + 2 * _x,  2 + _y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), CursorPosition);
 	//printf("\033[%dd\033[%dG", 2 + _y, 10 + 2 * _x);
-	
+
+	//m.unlock();
+	//std::this_thread::sleep_for(1ns);
+
+}
+
+void Interface::printXY(unsigned short _x, unsigned short _y, const char *string, int color) {//colorµµ 
+	m.lock();
+	setFontColor(color);
+	gotoXY(_x, _y); printf(string);
 	m.unlock();
 	std::this_thread::sleep_for(1ns);
-	
+}
+
+void Interface::cursorInvisible() {
+	CONSOLE_CURSOR_INFO Cinfo = { 0, };
+	Cinfo.dwSize = 1;
+	Cinfo.bVisible = FALSE;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Cinfo);
 }
 
 void Interface::setConsoleSize(HANDLE hBuffer, short cx, short cy) {

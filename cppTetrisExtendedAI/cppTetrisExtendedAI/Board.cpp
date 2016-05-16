@@ -1,4 +1,8 @@
 #include "Board.h"
+//#include <thread>
+//#include <mutex>
+//#include <chrono>
+std::mutex n;
 
 Board::Board() {
 	std::memset(boardArr, 0, sizeof(int)*X_LEN*Y_LEN);
@@ -8,8 +12,9 @@ Board::Board() {
 				boardArr[y][x] = BLOCK;
 		}
 	}
-	startPos.x = 1,startPos.y=1;
+	startPos.x = 1, startPos.y = 1;
 	setConsoleSize(GetStdHandle(STD_OUTPUT_HANDLE), 160, 40);
+	cursorInvisible();
 }
 
 void Board::setBoardStart(int startY, int startX) {
@@ -25,21 +30,26 @@ int Board::getBoard(int _y, int _x) {
 }
 
 void Board::drawBoard() {
+	n.lock();
 	int boardVal;
 	for (int y = 1; y < Y_LEN - 1; y++) {
 		for (int x = 1; x < X_LEN - 1; x++) {
-			if ((boardVal=boardArr[y][x]) != EMPTY) {
-				gotoXY(startPos.x+x, startPos.y+y);
-				setFontColor(boardVal + 3);
-				puts("□");
-				//printf("%s", colour[boardArr[y][x]-1]);
+			if ((boardVal = boardArr[y][x]) != EMPTY) {
+				printXY(startPos.x + x, startPos.y + y, "□", boardVal + 3);//used printXY to fix display scaterring problem comes from thread
+				//gotoXY(startPos.x + x, startPos.y + y);
+				//setFontColor(boardVal + 3);
+				//printf("□");
+
 			}
 			else if (boardVal == EMPTY) {
-				gotoXY(startPos.x+x, startPos.y+y); std::cout << " ";
+				printXY(startPos.x + x, startPos.y + y, " ", boardVal + 3);
+				//gotoXY(startPos.x + x, startPos.y + y); printf(" ");
 			}
 		}
 	}
 	resetFontColor();
+	n.unlock();
+
 }
 
 void Board::drawBoarder() {//테두리만 출력
@@ -47,7 +57,8 @@ void Board::drawBoarder() {//테두리만 출력
 	for (int y = 0; y < Y_LEN; y++) {
 		for (int x = 0; x < X_LEN; x++) {
 			if (boardArr[y][x] != EMPTY) {
-				gotoXY(startPos.x+x, startPos.y+y); puts("□");
+				printXY(startPos.x + x, startPos.y + y, "□", CC_RED);
+				//gotoXY(startPos.x + x, startPos.y + y); printf("□");
 				//printf("%s", colour[boardArr[y][x]]);
 			}
 		}

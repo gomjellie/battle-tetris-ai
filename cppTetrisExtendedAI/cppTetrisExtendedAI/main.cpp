@@ -32,41 +32,29 @@ SOFTWARE.*/
 
 #include <thread>
 
-void thread1() {
-	Controller humGame;
-	Sleep(1000);
-	humGame.gameInit();
+void thread1(Controller& humanGame) {
 
-	humGame.playGame();
+	humanGame.playGame();
 }
-void thread2() {
-	AiController* comGame= new AiController();
+void thread2(AiController& comGame) {
+	comGame.playGame();
+}
 
-	comGame->gameInit();
-	Sleep(1000);
-	comGame->playGame();
-}
-	
-int main(void) {
+int wmain(void) {
 	Sound::playNyanNyanSong();
-	//Controller* humGame = new Controller();
-	std::thread t1(thread1);
-	std::thread t2(thread2);
-	//humGame->gameInit();
-	//humGame->playGame();
-	t1.join();
-	t2.join();
 
+	Controller humanGame;
+	AiController comGame;
+	humanGame.gameInit();
+	Sleep(10);
+	comGame.gameInit();
+	Sleep(10);
+	std::thread humanThread(thread1, humanGame);
+	comGame.playGame();
+	//std::thread t2(thread2, comGame);
 
-	//AiController comGame;
-
-	//comGame.gameInit();
-	//comGame.playGame();
-
-
-	//std::thread t1(thread1);
-	
-	//t1.join();
+	humanThread.join();
+	//t2.join();
 
 	return 0;
 }

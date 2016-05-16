@@ -3,7 +3,7 @@
 Controller::Controller() {
 	key = '\0';
 	timeCnt = 0;
-	speed = 75;
+	speed = 125;
 	board.setBoardStart(2, 10);
 	block.setCoordStartPos(2, 10);
 	//default

@@ -25,6 +25,7 @@ void Block::moveUp() {
 			tmpBlockArr[i][j] = blockArr[i][j];
 		}
 	}
+
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			blockArr[i][3 - j] = tmpBlockArr[j][i];
@@ -79,11 +80,15 @@ void Block::setCoordStartPos(int _y, int _x) {
 	coordStartPos.X = _x;
 }
 void Block::drawNextBlock() {
+
 	int t;
 
 	for (int y = 0; y < 4; y++) {
 		for (int x = 0; x < 4; x++) {
-			gotoXY(coordStartPos.X +16 + x, coordStartPos.Y+4 + y); puts((t = blockShapeArr[blockPos.k][y][x]) ? "бр" : " ");
+
+			printXY(coordStartPos.X + 16 + x, coordStartPos.Y + 30 + y, (((blockShapeArr[blockPos.k][y][x]) != 0) ? "бр" : " "), blockPos.k+ 4 );
+			
+
 		}
 	}
 

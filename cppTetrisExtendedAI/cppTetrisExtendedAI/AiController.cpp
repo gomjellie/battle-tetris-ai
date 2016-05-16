@@ -16,37 +16,6 @@ void AiController::playGame() {
 		//timeControl(); //key입력받는게 들어있음
 		//어차피 키입력 안받으니까 없앰 시간제어도 안함
 
-		//switch (key)
-		//{
-		//case RIGHT:
-		//	block.moveRight();
-		//	if (collision())
-		//		block.moveLeft();
-		//	break;
-		//case LEFT:
-		//	block.moveLeft();
-		//	if (collision())
-		//		block.moveRight();
-		//	break;
-		//case UP:
-		//	block.moveUp();
-		//	if (collision()) {
-		//		block.moveUp(); block.moveUp(); block.moveUp();
-		//	}
-		//	break;
-		//case DOWN:
-		//	block.moveDown();
-		//	if (collision())
-		//		stack();
-		//	break;
-		//case SPACE:
-		//	while (!collision()) {
-		//		block.moveDown();
-		//	}stack();
-		//	break;
-		//default:
-		//	break;
-		//}
 		targetPos = findIdealPosition();
 		moveToBestPos();
 
@@ -62,7 +31,7 @@ void AiController::animationEffect(const double _time) {
 	board.writeBlockOnBoard(block);
 	board.drawBoard();
 	board.eraseBlockOffBoard(block);
-	Sleep((DWORD)_time*speed);
+	//Sleep((DWORD)_time*speed);
 }
 
 void AiController::moveToBestPos() {
@@ -118,12 +87,14 @@ PosAi AiController::findIdealPosition() {
 
 			while (!collision()) {
 				block.moveDown();
-			}
-			block.moveUp("up");
+			}block.moveUp("up");
+
 			board.writeBlockOnBoard(block);
-			plusScore = 7 * getIdealPoint() + 5 * getClearLinePoint() + 10 * getAdjacentPoint();
-			minusScore = 17 * getMinusPoint();
+
+			plusScore = 5 * getIdealPoint() + 6 * getClearLinePoint() + 5 * getAdjacentPoint();
+			minusScore = 16 * getMinusPoint();
 			totalScore = plusScore - minusScore;
+
 			board.eraseBlockOffBoard(block);
 
 			if (highestScore <= totalScore) {
@@ -155,7 +126,7 @@ PosAi AiController::findIdealPosition() {
 int AiController::getIdealPoint() {
 	int boardIdealPoint = 0;
 	int x = 0, y = 0;
-	
+
 	for (y = 2; y < board.Y_LEN - 1; y++) {
 		for (x = 1; x < board.X_LEN - 1; x++) {
 
@@ -165,7 +136,7 @@ int AiController::getIdealPoint() {
 
 		}
 	}
-	
+
 	return boardIdealPoint;
 }
 
@@ -198,7 +169,7 @@ int AiController::getMinusPoint() {
 	int x = 0, y = 0;
 	int height = 0;
 
-	
+
 	//for (x = block.getPos().x; x < block.getPos().x + 4; x++) {
 	//	
 	//	if (block.getBlock(0,x)||block.getBlock(1, x)||block.getBlock(2, x)||block.getBlock(3,x)) {
@@ -217,8 +188,8 @@ int AiController::getMinusPoint() {
 
 	//}//making new formular
 
-	for (x = 1; x < board.X_LEN -1; x++) {
-	
+	for (x = 1; x < board.X_LEN - 1; x++) {
+
 		for (y = 2; board.getBoard(y, x) == 0; y++) {
 			height = y;
 		}
@@ -226,7 +197,7 @@ int AiController::getMinusPoint() {
 		for (y = board.Y_LEN - 1; y > height; y--) {
 
 			if (board.getBoard(y, x) == 0) {
-				
+
 				boardMinusPoint += y;
 			}
 		}
@@ -240,7 +211,7 @@ int AiController::getClearLinePoint() {
 	int clearLinePoint = 0;
 	int x = 0, y = 0;
 	int count = 0;
-	
+
 	for (y = block.getPos().y; y < block.getPos().y + 4; y++) {
 		for (x = 1, count = 0; x < board.X_LEN - 1; x++) {
 
@@ -253,9 +224,9 @@ int AiController::getClearLinePoint() {
 			clearLinePoint += y*(board.X_LEN - 2);
 		}
 	}
-	
+
 	//		if (count == board.X_LEN - 3) {}
-	
+
 	return clearLinePoint;
 }
 
