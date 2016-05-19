@@ -25,7 +25,7 @@ void Board::setBoard(int _y, int _x, int _val) {
 	boardArr[_y][_x] = _val;
 }
 
-int Board::getBoard(int _y, int _x) {
+int Board::getBoard(int _y, int _x) const{
 	return boardArr[_y][_x];
 }
 

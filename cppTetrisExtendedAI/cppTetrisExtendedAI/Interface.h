@@ -9,8 +9,8 @@
 
 class Interface :public Color {
 public:
-	void printXY(unsigned short _x, unsigned short _y, const char *string, int color);
-	void gotoXY(unsigned short _x, unsigned short _y);
+	void printXY(unsigned short _x, unsigned short _y, const char *string, int color) const;
+	void gotoXY(unsigned short _x, unsigned short _y) const;
 	const char colour[7][4] = {
 		"РҐ",
 		"зп",

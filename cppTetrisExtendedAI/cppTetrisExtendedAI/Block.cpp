@@ -55,16 +55,20 @@ void Block::randomizeShape() {
 	drawNextBlock();
 }
 
-int Block::getBlock(int _y, int _x) {
+int Block::getBlock(int _y, int _x) const {
 	return blockArr[_y][_x];
+}
+
+int Block::getBlockShape(int _z,int _y, int _x) const {
+	return blockShapeArr[_z][_y][_x];
+}
+
+Pos Block::getPos() const const {
+	return blockPos;
 }
 
 void Block::setBlock(int _y, int _x, int _val) {
 	blockArr[_y][_x] = _val;
-}
-
-Pos Block::getPos() {
-	return blockPos;
 }
 
 void Block::setPosX(int _x) {
@@ -75,6 +79,9 @@ void Block::setPosY(int _y) {
 	blockPos.y = _y;
 }
 
+void Block::setPosZ(int _z) {
+	blockPos.z = _z;
+}
 void Block::setCoordStartPos(int _y, int _x) {
 	coordStartPos.Y = _y;
 	coordStartPos.X = _x;

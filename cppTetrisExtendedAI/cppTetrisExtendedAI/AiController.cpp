@@ -27,6 +27,7 @@ void AiController::playGame() {
 	}
 }
 
+
 void AiController::animationEffect(const double _time) {
 	board.writeBlockOnBoard(block);
 	board.drawBoard();

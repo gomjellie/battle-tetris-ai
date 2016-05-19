@@ -6,7 +6,7 @@
 //#include <chrono>
 std::mutex m;
 using namespace std::literals;
-void Interface::gotoXY(unsigned short _x, unsigned short _y) {
+void Interface::gotoXY(unsigned short _x, unsigned short _y) const {
 	//m.lock();
 	COORD CursorPosition = { 10 + 2 * _x,  2 + _y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), CursorPosition);
@@ -17,7 +17,7 @@ void Interface::gotoXY(unsigned short _x, unsigned short _y) {
 
 }
 
-void Interface::printXY(unsigned short _x, unsigned short _y, const char *string, int color) {//colorµµ 
+void Interface::printXY(unsigned short _x, unsigned short _y, const char *string, int color) const {//colorµµ 
 	m.lock();
 	setFontColor(color);
 	gotoXY(_x, _y); printf(string);

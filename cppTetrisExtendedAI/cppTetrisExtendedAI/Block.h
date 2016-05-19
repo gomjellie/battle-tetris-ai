@@ -20,10 +20,12 @@ public:
 	void moveDown();
 	void changeShape();
 	void randomizeShape();
-	int getBlock(int _y, int _x);
-	Pos getPos();
+	int getBlock(int _y, int _x) const;
+	Pos getPos() const;
+	int getBlockShape(int _z,int _y, int _x) const;
 	void setPosX(int _x);
 	void setPosY(int _y);
+	void setPosZ(int _z);
 	void setBlock(int _y, int _x, int _val);
 	void drawNextBlock();
 	void setCoordStartPos(int _y, int _x);

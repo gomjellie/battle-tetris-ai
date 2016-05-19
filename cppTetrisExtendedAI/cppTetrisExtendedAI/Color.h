@@ -6,8 +6,8 @@
 class Color {
 public:
 	//생성자 그냥 디폴트로
-	void setColor(int color, int bgColor);
-	void setFontColor(int color);
+	void setColor(int color, int bgColor) const;
+	void setFontColor(int color) const;
 	void setBgColor(int bgColor);
 	__inline void resetColor() {
 		setColor(CC_DEFAULT, CC_DEFAULT_BG);

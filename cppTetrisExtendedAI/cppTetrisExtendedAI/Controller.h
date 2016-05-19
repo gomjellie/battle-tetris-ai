@@ -1,8 +1,8 @@
 #ifndef __CONTROLLER_H__
 #define __CONTROLLER_H__
 
-#include "Block.h"
 #include "Board.h"
+#include "Ghost.h"
 //#include <Windows.h>
 #include <cstdlib>
 #include <ctime>
@@ -22,6 +22,7 @@ public:
 protected:
 	Block block;
 	Board board;
+	Ghost ghost;
 	unsigned int timeCnt;
 	unsigned int speed;
 	int key;

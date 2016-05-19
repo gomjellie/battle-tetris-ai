@@ -80,6 +80,7 @@ void Controller::stack() {
 	block.moveUp("up");
 	board.writeBlockOnBoard(block);
 	block.changeShape();
+	//ghost.gen(block, board);
 	board.clearLine();
 	//board.gotoXY(13, 13); printf("%d", block.getPos().z);
 	block.randomizeShape();

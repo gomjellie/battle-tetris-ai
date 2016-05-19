@@ -12,7 +12,7 @@ public:
 	Board();
 	void setBoardStart(int startY, int startX);
 	void setBoard(int _y, int _x, int _val);
-	int getBoard(int _y, int _x);
+	int getBoard(int _y, int _x) const;
 	//void gotoXY(unsigned short _x, unsigned short _y);
 	//void stack();
 	void drawBoard();
