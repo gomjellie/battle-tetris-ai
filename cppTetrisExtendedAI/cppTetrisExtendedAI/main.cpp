@@ -50,7 +50,7 @@ int wmain(void) {
 	comGame.gameInit();
 	Sleep(10);
 	std::thread humanThread(thread1, humanGame);
-	//comGame.playGame();
+	comGame.playGame();
 	//std::thread t2(thread2, comGame);
 
 	humanThread.join();
