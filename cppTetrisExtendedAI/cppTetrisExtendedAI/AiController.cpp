@@ -7,7 +7,7 @@ AiController::AiController() {
 	ghost.setStartPos(2, 40);
 
 	targetPos.x = 5; targetPos.y = 1; targetPos.rotation = 0; targetPos.rotation = 0;
-	aispeed = 0.1;
+	aispeed = 0.0001;
 }
 
 //@Override
@@ -23,10 +23,10 @@ void AiController::playGame() {
 		board.writeBlockOnBoard(block);
 		board.drawBoard();
 		ghost.gen();
-		//ghost.findPos(block,board);
+
 		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
 		board.eraseBlockOffBoard(block);
-		Sleep(2);//Thread test용
+		Sleep(1);//Thread test용
 	}
 }
 
@@ -36,7 +36,7 @@ void AiController::animationEffect(const double _time) {
 	board.drawBoard();
 	board.eraseBlockOffBoard(block);
 	ghost.gen();
-	//Sleep((DWORD)_time*speed);
+	Sleep((DWORD)_time*speed);
 }
 
 void AiController::moveToBestPos() {
@@ -46,23 +46,23 @@ void AiController::moveToBestPos() {
 		block.moveUp();
 		if (collision())
 			nxt = QUIT;
-		animationEffect(4);
+		animationEffect(1);
 	}
 	while (block.getPos().x != targetPos.x) {
 		if (block.getPos().x > targetPos.x) {
 			block.moveLeft();
 			if (collision())
 				nxt = QUIT;
-			animationEffect(2);
+			animationEffect(0);
 		}
 		else if (block.getPos().x < targetPos.x) {
 			block.moveRight();
 			if (collision())
 				nxt = QUIT;
-			animationEffect(2);
+			animationEffect(0);
 		}
 	}
-	animationEffect(2);
+	animationEffect(1);
 	while (!collision()) {
 		//animationEffect(0);
 		block.moveDown();

@@ -149,6 +149,7 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="Interface.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sound.cpp" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Ghost.h" />
     <ClInclude Include="Interface.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Sound.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

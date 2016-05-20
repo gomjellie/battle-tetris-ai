@@ -36,9 +36,7 @@ void thread1(Controller& humanGame) {
 	
 	humanGame.playGame();
 }
-void thread2(AiController& comGame) {
-	comGame.playGame();
-}
+
 
 int wmain(void) {
 	char string[255];
@@ -56,10 +54,8 @@ int wmain(void) {
 		controller.playGame();
 	});
 	comGame.playGame();
-	//std::thread t2(thread2, comGame);
 
 	humanThread.join();
-	//t2.join();
 
 	return 0;
 }
