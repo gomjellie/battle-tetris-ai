@@ -7,7 +7,8 @@ void Ghost::gen(const Block& block,const Board& board) {
 
 	for (int x = 0; x < 4; x++) {
 		for (int y = 0; y < 4; y++) {
-			if (block.getBlockShape(getPos().z, y, x)!=0) {
+			if(block.getBlock(y,x)!=0){
+			//if (block.getBlockShape(getPos().z, y, x)!=0) {
 				setBlock(y, x, getPos().z+1);
 			}
 			else{
@@ -49,11 +50,18 @@ void Ghost::show() const{
 	for (int y = 0; y < 4; y++) {
 		for (int x = 0; x < 4; x++) {
 			if (getBlock(y, x)) {
-				printXY(getPos().x + x, 2 + getPos().y + y, "b", getPos().z + 4);
+				printXY(getPos().x + x + startPos.X, getPos().y + startPos.Y + y, "b", getPos().z + 4);
 			}
 			else {
 				//printXY(getPos().x + x, 2 + getPos().y + y, " ", getPos().z + 4);
 			}
 		}
 	}
+}
+
+void Ghost::setStartPos(int _y, int _x) {
+	startPos.Y = _y;
+	startPos.X = _x;
+
+
 }

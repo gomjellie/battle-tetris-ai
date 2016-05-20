@@ -4,6 +4,7 @@ AiController::AiController() {
 	Controller();
 	board.setBoardStart(2, 40);
 	block.setCoordStartPos(2, 40);
+	ghost.setStartPos(2, 40);
 
 	targetPos.x = 5; targetPos.y = 1; targetPos.rotation = 0; targetPos.rotation = 0;
 	aispeed = 0.1;
@@ -21,6 +22,8 @@ void AiController::playGame() {
 
 		board.writeBlockOnBoard(block);
 		board.drawBoard();
+		ghost.gen(block,board);
+		ghost.findPos(block,board);
 		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
 		board.eraseBlockOffBoard(block);
 		Sleep(2);//Thread test용
