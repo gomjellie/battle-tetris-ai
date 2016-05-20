@@ -11,7 +11,7 @@
 class Controller {
 public:
 	Controller();
-	void gameInit();
+	void gameInit(unsigned int seed);
 	void playGame();
 	bool collision();
 	void scanKey();

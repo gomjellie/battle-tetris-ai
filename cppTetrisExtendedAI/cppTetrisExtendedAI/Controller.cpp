@@ -1,6 +1,6 @@
 #include "Controller.h"
 
-Controller::Controller() {
+Controller::Controller() : block(), board(), ghost(this->block, this->board) {
 	key = '\0';
 	timeCnt = 0;
 	speed = 125;
@@ -10,8 +10,8 @@ Controller::Controller() {
 	//default
 }
 
-void Controller::gameInit() {
-	srand((unsigned int)time(NULL));
+void Controller::gameInit(unsigned int seed) {
+	srand(seed);
 	board.drawBoarder();
 	block.changeShape();
 	//Sound::playNyanNyanSong();
@@ -59,7 +59,7 @@ void Controller::playGame() {
 		}
 		board.writeBlockOnBoard(block);
 		board.drawBoard();
-		ghost.gen(block, board);
+		ghost.gen();
 		//ghost.findPos(block,board);
 		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
 		board.eraseBlockOffBoard(block);
@@ -83,7 +83,7 @@ void Controller::stack() {
 	block.moveUp("up");
 	board.writeBlockOnBoard(block);
 	block.changeShape();
-	ghost.gen(block, board);
+	ghost.gen();
 	board.clearLine();
 	//board.gotoXY(13, 13); printf("%d", block.getPos().z);
 	block.randomizeShape();

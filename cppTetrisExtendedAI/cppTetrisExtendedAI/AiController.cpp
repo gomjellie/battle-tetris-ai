@@ -22,7 +22,7 @@ void AiController::playGame() {
 
 		board.writeBlockOnBoard(block);
 		board.drawBoard();
-		ghost.gen(block,board);
+		ghost.gen();
 		//ghost.findPos(block,board);
 		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
 		board.eraseBlockOffBoard(block);
@@ -35,6 +35,7 @@ void AiController::animationEffect(const double _time) {
 	board.writeBlockOnBoard(block);
 	board.drawBoard();
 	board.eraseBlockOffBoard(block);
+	ghost.gen();
 	//Sleep((DWORD)_time*speed);
 }
 

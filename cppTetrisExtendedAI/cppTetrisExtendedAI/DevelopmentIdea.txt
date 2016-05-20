@@ -1,0 +1,60 @@
+
+
+class Item {
+	virtual void action(Controller* self, Controller* target) = 0;
+}
+
+class AttackItem : public Item {
+	/** 2줄 추가하는 아이템 */
+	void action(Controller *self, Controller* target) {
+		auto* board = target->getBoard();
+		board.insert(2);
+	}
+}
+
+class HelperItem : public item {
+	/** 2줄 지우기 */
+	void action(Controller *self, Controller* target) {
+		auto* board = self->getBoard();
+		board.remove(2);
+	}
+}
+
+
+class Controller {
+
+private:
+	Controller* opposite;
+	Item* item = nullptr;
+	
+public:
+	void game() {
+		if (keyPressed(CTRL)) {
+			this->useItem();
+		}
+	}
+
+	void useItem() {
+		if (this->item == nullptr) {
+			// 아이템이 없잖아요!
+		}
+		else {
+			// 아이템이 있네요
+			this->item.action(this, this->opposite())
+		}
+	}
+
+
+	Board* getBoard() {
+		return this->board;
+	}
+}
+
+main() {
+	Controller player;
+	AIController ai;
+
+	ai->setOpposite(player);
+	player->setOpposite(ai);
+
+}

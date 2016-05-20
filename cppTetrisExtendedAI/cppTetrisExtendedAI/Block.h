@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include "Interface.h"
 
+
 typedef struct _Pos {
 	int x, y, z, k;
 }Pos;

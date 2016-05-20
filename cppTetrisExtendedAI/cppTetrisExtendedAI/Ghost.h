@@ -5,12 +5,18 @@
 
 class Ghost:public Block {
 public:
-	void show(const Block& block) const;
-	void gen(const Block& block, const Board& board);
-	void findPos(const Block& block, const Board& board);
+	Ghost(Block& block, Board& board);
+
+	void show();
+	void gen();
+	void findPos();
 	void setStartPos(int _y, int _x);
-	bool collision(const Block& block, const Board& board);
+	bool collision();
+
+	Block& getBlockRef();
 private:
 	COORD startPos;
+	Block& block;
+	Board& board;
 };
 #endif // !__GHOST_H__

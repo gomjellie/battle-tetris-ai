@@ -63,7 +63,7 @@ int Block::getBlockShape(int _z,int _y, int _x) const {
 	return blockShapeArr[_z][_y][_x];
 }
 
-Pos Block::getPos() const const {
+Pos Block::getPos() const {
 	return blockPos;
 }
 

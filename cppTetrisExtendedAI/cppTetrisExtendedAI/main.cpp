@@ -33,7 +33,7 @@ SOFTWARE.*/
 #include <thread>
 
 void thread1(Controller& humanGame) {
-
+	
 	humanGame.playGame();
 }
 void thread2(AiController& comGame) {
@@ -41,15 +41,20 @@ void thread2(AiController& comGame) {
 }
 
 int wmain(void) {
+	char string[255];
+	sprintf(string, "title hello, %s", "test");
+
+	system(string);
 	Sound::playNyanNyanSong();
 
-	Controller humanGame;
 	AiController comGame;
-	humanGame.gameInit();
-	Sleep(10);
-	comGame.gameInit();
-	Sleep(10);
-	std::thread humanThread(thread1, humanGame);
+
+	comGame.gameInit((unsigned int)time(NULL) ^ 0b1010101);
+	std::thread humanThread([&]() {
+		Controller controller;
+		controller.gameInit((unsigned int)time(NULL));
+		controller.playGame();
+	});
 	comGame.playGame();
 	//std::thread t2(thread2, comGame);
 
