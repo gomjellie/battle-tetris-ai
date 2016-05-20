@@ -1,17 +1,17 @@
 #include "Ghost.h"
 
-void Ghost::gen(const Block& block,const Board& board) {
+void Ghost::gen(const Block& block, const Board& board) {
 	setPosX(block.getPos().x);
-	setPosY(block.getPos().y+4);
+	setPosY(block.getPos().y + 4);
 	setPosZ(block.getPos().z);
 
 	for (int x = 0; x < 4; x++) {
 		for (int y = 0; y < 4; y++) {
-			if(block.getBlock(y,x)!=0){
-			//if (block.getBlockShape(getPos().z, y, x)!=0) {
-				setBlock(y, x, getPos().z+1);
+			if (block.getBlock(y, x) != 0) {
+				//if (block.getBlockShape(getPos().z, y, x)!=0) {
+				setBlock(y, x, getPos().z + 1);
 			}
-			else{
+			else {
 				setBlock(y, x, 0);
 			}
 		}
@@ -29,7 +29,7 @@ void Ghost::findPos(const Block& block, const Board& board) {
 		moveDown();
 	}
 	moveUp("up");
-	show();
+	show(block);
 
 }
 
@@ -46,14 +46,12 @@ bool Ghost::collision(const Block& block, const Board& board) {
 	return false;
 }
 
-void Ghost::show() const{
+void Ghost::show(const Block& block) const {
 	for (int y = 0; y < 4; y++) {
 		for (int x = 0; x < 4; x++) {
-			if (getBlock(y, x)) {
-				printXY(getPos().x + x + startPos.X, getPos().y + startPos.Y + y, "b", getPos().z + 4);
-			}
-			else {
-				//printXY(getPos().x + x, 2 + getPos().y + y, " ", getPos().z + 4);
+			if ((getPos().y > block.getPos().y + 3) && getBlock(y, x)) {
+
+				printXY(getPos().x + x + startPos.X, getPos().y + startPos.Y + y, "H", getPos().z + 4);
 			}
 		}
 	}

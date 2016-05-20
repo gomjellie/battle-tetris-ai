@@ -5,7 +5,7 @@
 
 class Ghost:public Block {
 public:
-	void show() const;
+	void show(const Block& block) const;
 	void gen(const Block& block, const Board& board);
 	void findPos(const Block& block, const Board& board);
 	void setStartPos(int _y, int _x);
