@@ -7,5 +7,5 @@ public:
 private:
 
 
-}
+};
 #endif // !__ITEM_H__
