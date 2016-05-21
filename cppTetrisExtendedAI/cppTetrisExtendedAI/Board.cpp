@@ -13,6 +13,7 @@ Board::Board() {
 		}
 	}
 	startPos.x = 1, startPos.y = 1;
+	score = 0;
 	setConsoleSize(GetStdHandle(STD_OUTPUT_HANDLE), 160, 40);
 	cursorInvisible();
 }
@@ -65,10 +66,7 @@ void Board::drawBoarder() {//테두리만 출력
 	}
 	resetFontColor();
 }
-//
-//void Board::stack() {
-//	//controller에 있음
-//}
+
 
 void Board::writeBlockOnBoard(Block &block) {
 	for (int y = 0; y < 4; y++) {
@@ -91,7 +89,9 @@ void Board::eraseBlockOffBoard(Block &block) {
 }
 
 void Board::clearLine() {
+
 	int checkLine = 0;// f means field
+	char tmp[32] = { 0, };
 	for (int y = Y_LEN - 2; y > 1; y--) {
 		for (int x = 1; x < X_LEN - 1; x++) {
 			if (boardArr[y][x] != EMPTY) {
@@ -102,7 +102,12 @@ void Board::clearLine() {
 			for (int x = 1; x < X_LEN - 1; x++) {
 				boardArr[y][x] = EMPTY;
 			}
-			gravity(y); score += 10; clearLine();
+			gravity(y); 
+			score += 100;
+
+			printXY(startPos.x + 16, startPos.y + 9, _itoa(score, tmp, 10), CC_RED);
+			//debugMonitor(100, score);
+			clearLine();
 		}
 
 		checkLine = 0;
@@ -116,9 +121,3 @@ void Board::gravity(int _y) {
 		}
 	}
 }
-
-//void Board::gotoXY(unsigned short _x, unsigned short _y) {
-//	//COORD CursorPosition = { 10+ 2*_x,  2+_y };
-//	//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), CursorPosition);
-//	printf("\033[%dd\033[%dG", 2+_y, 10+ 2 * _x);
-//}

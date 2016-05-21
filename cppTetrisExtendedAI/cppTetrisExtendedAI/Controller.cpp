@@ -3,7 +3,7 @@
 Controller::Controller() : block(), board(), ghost(this->block, this->board) {
 	key = '\0';
 	timeCnt = 0;
-	speed = 125;
+	speed = 50;
 	board.setBoardStart(2, 10);
 	block.setCoordStartPos(2, 10);
 	ghost.setStartPos(2, 10);
@@ -95,7 +95,7 @@ void Controller::stack() {
 void Controller::timeControl() {
 	while (true) {
 		if (_kbhit()) {
-			scanKey(); timeCnt += 3; break;
+			scanKey(); timeCnt += 10; break;
 		}
 		else {
 			Sleep(1); timeCnt++;
@@ -105,11 +105,3 @@ void Controller::timeControl() {
 		}
 	}
 }
-
-
-//
-//void Controller::gotoXY(unsigned short _x, unsigned short _y){
-//	//COORD CursorPosition = { 10+ 2*_x,  2+_y };
-//	//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), CursorPosition);
-//	printf("\033[%dd\033[%dG", 2+_y, 10+2*_x);
-//}

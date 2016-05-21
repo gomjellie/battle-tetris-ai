@@ -1,11 +1,10 @@
 #include "Interface.h"
 #include <stdio.h>
 
-//#include <thread>
-//#include <mutex>
-//#include <chrono>
+
 std::mutex m;
 using namespace std::literals;
+
 void Interface::gotoXY(unsigned short _x, unsigned short _y) const {
 	//m.lock();
 	COORD CursorPosition = { 10 + 2 * _x,  2 + _y };
@@ -22,7 +21,7 @@ void Interface::printXY(unsigned short _x, unsigned short _y, const char *string
 	setFontColor(color);
 	gotoXY(_x, _y); printf(string);
 	m.unlock();
-	std::this_thread::sleep_for(1ns);
+	//std::this_thread::sleep_for(1ns);
 }
 
 void Interface::cursorInvisible() {
@@ -94,4 +93,11 @@ void Interface::setConsoleSize(HANDLE hBuffer, short cx, short cy) {
 			SetConsoleWindowInfo(hBuffer, TRUE, &srWindowRect);
 		}
 	}
+}
+
+void Interface::debugMonitor(int n1, int n2) {
+	char string[255];
+	sprintf(string, "title humanscore - %d computer score - %d", n1, n2);
+
+	system(string);
 }

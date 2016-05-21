@@ -31,18 +31,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
 #include <thread>
-
-void thread1(Controller& humanGame) {
-	
-	humanGame.playGame();
-}
+//
+//void thread1(Controller& humanGame) {
+//	
+//	humanGame.playGame();
+//}
 
 
 int wmain(void) {
-	char string[255];
-	sprintf(string, "title hello, %s", "test");
-
-	system(string);
 	Sound::playNyanNyanSong();
 
 	AiController comGame;

@@ -33,7 +33,7 @@ public:
 
 private:
 	int boardArr[Y_LEN][X_LEN];
-	int score;
+	unsigned int score;
 	Pos startPos;
 
 

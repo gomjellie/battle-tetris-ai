@@ -22,6 +22,7 @@ public:
 	};
 	void setConsoleSize(HANDLE hBuffer, short y, short x);
 	void Interface::cursorInvisible();
+	void debugMonitor(int n1, int n2);
 };
 
 #endif // !__INTERFACE_H__
