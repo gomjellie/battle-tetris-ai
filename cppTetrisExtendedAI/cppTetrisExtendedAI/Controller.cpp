@@ -71,7 +71,10 @@ bool Controller::collision() {
 		for (int x = 0; x < 4; x++) {
 			if (board.getBoard(block.getPos().y + y, block.getPos().x + x) != 0 &&
 				block.getBlock(y, x) != 0) {
-				return true;
+				if (block.getPos().y < 3 && block.getPos().x>1 && block.getPos().x<Board::X_LEN-5)
+					exit(1);
+				else
+					return true;
 			}
 		}
 	}

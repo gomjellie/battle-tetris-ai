@@ -26,7 +26,7 @@ void AiController::playGame() {
 
 		//block.drawNextBlock();-> block.randomizeNextBlock에 삽입함 매번그리는것보다 그게 더 효율적이라서
 		board.eraseBlockOffBoard(block);
-		Sleep(1);//Thread test용
+		//Sleep(1);//Thread test용
 	}
 }
 
@@ -36,7 +36,7 @@ void AiController::animationEffect(const double _time) {
 	board.drawBoard();
 	board.eraseBlockOffBoard(block);
 	ghost.gen();
-	Sleep((DWORD)_time*speed);
+	//Sleep((DWORD)_time*speed);
 }
 
 void AiController::moveToBestPos() {
@@ -62,7 +62,7 @@ void AiController::moveToBestPos() {
 			animationEffect(0);
 		}
 	}
-	animationEffect(1);
+	animationEffect(0);
 	while (!collision()) {
 		//animationEffect(0);
 		block.moveDown();

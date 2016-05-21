@@ -93,9 +93,8 @@ void Block::drawNextBlock() {
 	for (int y = 0; y < 4; y++) {
 		for (int x = 0; x < 4; x++) {
 
-			printXY(coordStartPos.X + 16 + x, coordStartPos.Y + 30 + y, (((blockShapeArr[blockPos.k][y][x]) != 0) ? "бр" : " "), blockPos.k+ 4 );
+			printXY(coordStartPos.X + 16 + x, coordStartPos.Y + 2 + y, (((blockShapeArr[blockPos.k][y][x]) != 0) ? "бр" : " "), blockPos.k+ 4 );
 			
-
 		}
 	}
 
