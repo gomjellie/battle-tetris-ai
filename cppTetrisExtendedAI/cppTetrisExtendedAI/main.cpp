@@ -42,16 +42,20 @@ int wmain(void) {
 	Sound::playNyanNyanSong();
 
 	AiController comGame;
-
-	comGame.gameInit((unsigned int)time(NULL) ^ 0b1010101);
+	Controller controller;
+	//comGame.gameInit((unsigned int)time(NULL) ^ 0b1010101);
+	
 	std::thread humanThread([&]() {
-		Controller controller;
 		controller.gameInit((unsigned int)time(NULL));
 		controller.playGame();
 	});
-	comGame.playGame();
+	std::thread computerThread([&]() {
+		comGame.gameInit((unsigned int)time(NULL) ^ 0b101010101);
+		comGame.playGame();
+	});
+	//comGame.playGame();
 
 	humanThread.join();
-
+	computerThread.join();
 	return 0;
 }

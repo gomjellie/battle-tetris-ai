@@ -3,10 +3,13 @@
 
 #include "Board.h"
 #include "Ghost.h"
+
 //#include <Windows.h>
 #include <cstdlib>
 #include <ctime>
 #include <conio.h>
+
+class Item;
 
 class Controller {
 public:
@@ -17,12 +20,16 @@ public:
 	void scanKey();
 	void stack();
 	void timeControl();
+	void setOpposite(Controller* _opposite);
 	//static void gotoXY(unsigned short _x, unsigned short _y);
 
 protected:
 	Block block;
 	Board board;
 	Ghost ghost;
+	Controller* opposite;
+	Item* item = nullptr;
+	
 	unsigned int timeCnt;
 	unsigned int speed;
 	int key;

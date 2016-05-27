@@ -53,7 +53,7 @@ void Ghost::show() {
 	for (int y = 0; y < 4; y++) {
 		for (int x = 0; x < 4; x++) {
 			if ((getPos().y > block.getPos().y + 3) && getBlock(y, x)) {
-
+				printXY(getPos().x + x + startPos.X, getPos().y + startPos.Y + y, "H", getPos().z + 4);
 				printXY(getPos().x + x + startPos.X, getPos().y + startPos.Y + y, "H", getPos().z + 4);
 			}
 		}

@@ -21,7 +21,7 @@ public:
 		"Í≈"
 	};
 	void setConsoleSize(HANDLE hBuffer, short y, short x);
-	void Interface::cursorInvisible();
+	void cursorInvisible();
 	void debugMonitor(int n1, int n2);
 };
 

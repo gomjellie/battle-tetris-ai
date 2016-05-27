@@ -17,6 +17,10 @@ void Controller::gameInit(unsigned int seed) {
 	//Sound::playNyanNyanSong();
 }
 
+void Controller::setOpposite(Controller* _opposite){
+	this->opposite=_opposite;
+}
+
 void Controller::scanKey() {
 	key = _getch();
 }
@@ -71,8 +75,8 @@ bool Controller::collision() {
 		for (int x = 0; x < 4; x++) {
 			if (board.getBoard(block.getPos().y + y, block.getPos().x + x) != 0 &&
 				block.getBlock(y, x) != 0) {
-				if (block.getPos().y < 3 && block.getPos().x>1 && block.getPos().x<Board::X_LEN-5)
-					exit(1);
+				if (block.getPos().y < 3 && block.getPos().x>1 && block.getPos().x < Board::X_LEN - 5)
+					key = QUIT;
 				else
 					return true;
 			}

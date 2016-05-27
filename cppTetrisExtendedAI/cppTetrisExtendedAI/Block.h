@@ -36,7 +36,7 @@ private:
 	Pos blockPos;
 	COORD coordStartPos;
 	int blockArr[4][4];
-	const int blockShapeArr[7][4][4] = {
+	const int blockShapeArr[8][4][4] = {
 		{
 			{ 0,0,1,0 },
 			{ 0,0,1,0 },
@@ -78,6 +78,12 @@ private:
 			{ 0,7,7,0 },
 			{ 0,7,7,0 },
 			{ 0,0,0,0 }
+		},
+		{
+			{ 8,0,8,0},
+			{ 0,8,0,8},
+			{ 8,0,8,0 },
+			{ 0,8,0,8 },
 		}
 	};
 };
