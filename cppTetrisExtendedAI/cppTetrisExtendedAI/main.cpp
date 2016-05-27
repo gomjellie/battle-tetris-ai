@@ -41,21 +41,24 @@ SOFTWARE.*/
 int wmain(void) {
 	Sound::playNyanNyanSong();
 
-	AiController comGame;
-	Controller controller;
-	//comGame.gameInit((unsigned int)time(NULL) ^ 0b1010101);
-	
-	std::thread humanThread([&]() {
-		controller.gameInit((unsigned int)time(NULL));
-		controller.playGame();
-	});
-	std::thread computerThread([&]() {
-		comGame.gameInit((unsigned int)time(NULL) ^ 0b101010101);
-		comGame.playGame();
-	});
-	//comGame.playGame();
 
+	AiController comController;
+	Controller humController;
+
+	comController.setOpposite(&humController);
+	humController.setOpposite(&comController);
+	
+	std::thread computerThread([&]() {
+		comController.gameInit((unsigned int)time(NULL) ^ 0b101010101);
+		comController.playGame();
+	});
+	std::thread humanThread([&]() {
+		humController.gameInit((unsigned int)time(NULL));
+		humController.playGame();
+	});
+	
 	humanThread.join();
 	computerThread.join();
+	
 	return 0;
 }

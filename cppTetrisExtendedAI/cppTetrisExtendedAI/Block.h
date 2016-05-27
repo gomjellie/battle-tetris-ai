@@ -27,6 +27,7 @@ public:
 	void setPosX(int _x);
 	void setPosY(int _y);
 	void setPosZ(int _z);
+	void setPosK(int _k);
 	void setBlock(int _y, int _x, int _val);
 	void drawNextBlock();
 	void setCoordStartPos(int _y, int _x);

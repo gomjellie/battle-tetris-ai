@@ -82,6 +82,10 @@ void Block::setPosY(int _y) {
 void Block::setPosZ(int _z) {
 	blockPos.z = _z;
 }
+
+void Block::setPosK(int _k) {
+	blockPos.k = _k;
+}
 void Block::setCoordStartPos(int _y, int _x) {
 	coordStartPos.Y = _y;
 	coordStartPos.X = _x;

@@ -1,14 +1,10 @@
 #ifndef __ITEM_H__
 #define __ITEM_H__
-#include "Controller.h"
+
+class Controller;
 
 class Item {
 public:
-	Item(Block& _block, Board& _board);
-	virtual void action(Controller* self, Controller* target);
-private:
-	Block block;
-	Board board;
-
+	virtual void action(Controller* self, Controller* target)=0;
 };
 #endif // !__ITEM_H__

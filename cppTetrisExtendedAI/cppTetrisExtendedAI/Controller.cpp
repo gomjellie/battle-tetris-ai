@@ -4,6 +4,7 @@ Controller::Controller() : block(), board(), ghost(this->block, this->board) {
 	key = '\0';
 	timeCnt = 0;
 	speed = 50;
+	itemDefensing = 0;
 	board.setBoardStart(2, 10);
 	block.setCoordStartPos(2, 10);
 	ghost.setStartPos(2, 10);
@@ -107,5 +108,23 @@ void Controller::timeControl() {
 		if (timeCnt > speed) {
 			timeCnt = 0; key = DOWN; break;
 		}
+	}
+}
+
+void Controller::useItem() {
+	if (this->item == nullptr) {
+		//there no Item!
+	}
+	else {
+		this->item->action(this, this->opposite);
+	}
+}
+
+bool Controller::isDefensing() {
+	if (this->itemDefensing) {
+		return true;
+	}
+	else {
+		return false;
 	}
 }

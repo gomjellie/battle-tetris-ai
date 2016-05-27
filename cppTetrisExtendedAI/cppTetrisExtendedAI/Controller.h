@@ -3,13 +3,13 @@
 
 #include "Board.h"
 #include "Ghost.h"
+#include "Item.h"
 
 //#include <Windows.h>
 #include <cstdlib>
 #include <ctime>
 #include <conio.h>
 
-class Item;
 
 class Controller {
 public:
@@ -21,6 +21,11 @@ public:
 	void stack();
 	void timeControl();
 	void setOpposite(Controller* _opposite);
+	void useItem();
+	bool isDefensing();
+	Block* getBlock() {return &this->block;};
+	Board* getBoard() {return &this->board;};
+
 	//static void gotoXY(unsigned short _x, unsigned short _y);
 
 protected:
@@ -32,6 +37,7 @@ protected:
 	
 	unsigned int timeCnt;
 	unsigned int speed;
+	int itemDefensing;
 	int key;
 
 	enum controllerEnum
