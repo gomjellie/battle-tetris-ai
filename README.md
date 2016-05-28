@@ -23,7 +23,11 @@ how to run this software :find .sln file and open -> ctrl + F5  OR find .exe fil
 
 - 쓰레드 때문에 생기는 화면 깨지는 현상 해결함
 
-- 죽으면 종료 (방법이 더러움 종료되면서 뜨는 쓰레드 오류가 있음)
+- 죽으면 종료
+
+- 아이템 추가(1번키 누르면 상대방 다음 블록이 안좋은 모양으로 바뀜)
+
+
 
 
 
@@ -46,7 +50,7 @@ status now
 
 - game ends when it die (dirty way)
 
-
+- Item added ( press keyboard button 1 -> change opposite player's next block(8thblock) )
 
 추가할 기능
 
