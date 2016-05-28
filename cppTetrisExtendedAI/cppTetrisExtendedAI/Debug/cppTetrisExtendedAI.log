@@ -1,14 +1,8 @@
-﻿  main.cpp
-  Controller.cpp
-  Block.cpp
-c:\users\gomjellie\documents\github\cpptetrisextendedai\cpptetrisextendedai\cpptetrisextendedai\block.cpp(95): warning C4101: 't': unreferenced local variable
-  AttackItemScatter.cpp
-  Generating Code...
-  Compiling...
-  AiController.cpp
+﻿  Controller.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
+  main.cpp
   Item.cpp
-  Ghost.cpp
-  Board.cpp
+  AttackItemScatter.cpp
+  AiController.cpp
   cppTetrisExtendedAI.vcxproj -> C:\Users\gomjellie\Documents\GitHub\cppTetrisExtendedAI\cppTetrisExtendedAI\Debug\cppTetrisExtendedAI.exe

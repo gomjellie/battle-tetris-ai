@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "Ghost.h"
 #include "Item.h"
+#include "AttackItemScatter.h"
 
 //#include <Windows.h>
 #include <cstdlib>
@@ -42,7 +43,8 @@ protected:
 
 	enum controllerEnum
 	{
-		RIGHT = 77, LEFT = 75, UP = 72, DOWN = 80, QUIT = 27, SPACE = 32
+		RIGHT = 77, LEFT = 75, UP = 72, DOWN = 80, QUIT = 27, SPACE = 32, 
+		KEY_1 = 49, KEY_2 = 50, KEY_3 = 51, KEY_4 = 52
 	};
 };
 

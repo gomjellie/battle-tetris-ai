@@ -53,7 +53,7 @@ int wmain(void) {
 		comController.playGame();
 	});
 	std::thread humanThread([&]() {
-		humController.gameInit((unsigned int)time(NULL));
+		humController.gameInit((unsigned int)time(NULL) ^ 0b11111111);
 		humController.playGame();
 	});
 	

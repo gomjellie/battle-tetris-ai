@@ -5,6 +5,7 @@
 class AttackItemScatter :public Item{
 public :
 	void action(Controller* self, Controller* target);
+
 private:
 
 };

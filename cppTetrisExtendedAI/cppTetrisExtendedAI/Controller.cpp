@@ -59,6 +59,11 @@ void Controller::playGame() {
 				block.moveDown();
 			}stack();
 			break;
+		case KEY_1:
+			item = new AttackItemScatter();
+			this->useItem();
+			//item->action(this, opposite);
+			break;
 		default:
 			break;
 		}
