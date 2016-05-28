@@ -48,6 +48,9 @@
     <ClCompile Include="AttackItemScatter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AttackItemChangeBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AttackItemScatter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackItemChangeBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AiController.cpp" />
+    <ClCompile Include="AttackItemChangeBoard.cpp" />
     <ClCompile Include="AttackItemScatter.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Board.cpp" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AiController.h" />
+    <ClInclude Include="AttackItemChangeBoard.h" />
     <ClInclude Include="AttackItemScatter.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Board.h" />
