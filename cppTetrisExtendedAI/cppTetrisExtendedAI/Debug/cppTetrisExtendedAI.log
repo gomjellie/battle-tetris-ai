@@ -1,12 +1,4 @@
-﻿  AttackItemScatter.cpp
+﻿  main.cpp
+  AttackItemScatter.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Item.cpp
-  Ghost.cpp
-  Controller.cpp
-  Board.cpp
-  Block.cpp
-  AttackItemChangeBoard.cpp
-  AiController.cpp
   cppTetrisExtendedAI.vcxproj -> C:\Users\gomjellie\Documents\GitHub\cppTetrisExtendedAI\cppTetrisExtendedAI\Debug\cppTetrisExtendedAI.exe

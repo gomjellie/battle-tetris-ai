@@ -5,12 +5,13 @@
 /*20150318 Soongsil Univ. Dept. Of SmartSystemsSoftware Oh Inkyu
 gomjellie@gmail.com
 gomjellie@naver.com
+https://github.com/gomjellie
 License follows MIT License
 2016년 5월 오인규에 의해 작성됨
 */
 /*The MIT License(MIT)
 
-Copyright(c) 2016 Jacky Vincent
+Copyright(c) 2016 Jacky Vincent/ Oh Inkyu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files(the "Software"), to deal
