@@ -4,4 +4,5 @@
 void AttackItemScatter::action(Controller* self, Controller* target) {
 	Block* block = target->getBlock();
 	block->setPosK(7);
+	block->drawNextBlock();
 }
