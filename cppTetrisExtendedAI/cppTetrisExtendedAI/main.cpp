@@ -32,28 +32,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
 #include <thread>
-//
-//void thread1(Controller& humanGame) {
-//	
-//	humanGame.playGame();
-//}
-
 
 int wmain(void) {
-	Sound::playNyanNyanSong();
+	//Sound::playNyanNyanSong();
 
 
 	AiController comController;
 	Controller humController;
 
-	comController.setOpposite(&humController);
-	humController.setOpposite(&comController);
 	
 	std::thread computerThread([&]() {
+		comController.setOpposite(&humController);
 		comController.gameInit((unsigned int)time(NULL) ^ 0b101010101);
 		comController.playGame();
 	});
 	std::thread humanThread([&]() {
+		humController.setOpposite(&comController);
 		humController.gameInit((unsigned int)time(NULL) ^ 0b11111111);
 		humController.playGame();
 	});

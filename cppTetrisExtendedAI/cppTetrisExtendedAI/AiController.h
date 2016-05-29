@@ -20,6 +20,7 @@ public:
 	int getAdjacentPoint();
 	int getMinusPoint();
 	int nxt;
+	void stack();//overrided
 
 private:
 	PosAi targetPos;

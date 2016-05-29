@@ -60,8 +60,10 @@ void Controller::playGame() {
 			}stack();
 			break;
 		case KEY_1:
-			item = new AttackItemScatter();
-			this->useItem();
+			if (board.buyItem(1000)) {
+				item = new AttackItemScatter();
+				this->useItem();
+			}
 			//item->action(this, opposite);
 			break;
 		default:
@@ -92,7 +94,7 @@ bool Controller::collision() {
 	return false;
 }
 
-void Controller::stack() {
+void Controller::stack() {// contains changeShape, writeBlockOnBoard, clearLine and ghost.gen
 	block.moveUp("up");
 	board.writeBlockOnBoard(block);
 	block.changeShape();
@@ -102,7 +104,7 @@ void Controller::stack() {
 	block.randomizeShape();
 }
 
-void Controller::timeControl() {
+void Controller::timeControl() {// controls time but I think it's not good way
 	while (true) {
 		if (_kbhit()) {
 			scanKey(); timeCnt += 10; break;
@@ -114,18 +116,25 @@ void Controller::timeControl() {
 			timeCnt = 0; key = DOWN; break;
 		}
 	}
-}
+}// it has big flaw
 
-void Controller::useItem() {
+void Controller::useItem() {// it also checks whether item points null && opposite is defensing
 	if (this->item == nullptr) {
+		this->board.showMessage("item == nullptr");//ÀÌÁ¤µµ¸é ¾Ë¾Æµè°ÚÁö¹¹
 		//there no Item!
 	}
 	else {
-		this->item->action(this, this->opposite);
+		if (!opposite->isDefensing()) {
+			this->item->action(this, this->opposite);
+			
+			this->opposite->board.showMessage("Attacked");//show away player that he's attacked
+			this->board.showMessage("attack succeed");//show player that he's succed at attacking
+		}
+		this->item = nullptr;
 	}
 }
 
-bool Controller::isDefensing() {
+bool Controller::isDefensing() {//if defensing returns true else if it's not defensing returns false
 	if (this->itemDefensing) {
 		return true;
 	}

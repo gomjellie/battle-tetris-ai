@@ -16,7 +16,11 @@ void AiController::playGame() {
 	while (key != QUIT) {
 		//timeControl(); //key입력받는게 들어있음
 		//어차피 키입력 안받으니까 없앰 시간제어도 안함
-
+		/*if ( board.getScore() >=1000) {
+			board.buyItem(1000);
+			item = new AttackItemScatter();
+			this->useItem();
+		}*/
 		targetPos = findIdealPosition();
 		moveToBestPos();
 
@@ -235,3 +239,18 @@ int AiController::getClearLinePoint() {
 	return clearLinePoint;
 }
 
+//Override
+void AiController::stack() {//Overrided Func contains changeShape, writeBlockOnBoard, clearLine and ghost.gen
+	block.moveUp("up");
+	board.writeBlockOnBoard(block);
+	block.changeShape();
+	ghost.gen();
+	board.clearLine();
+	//board.gotoXY(13, 13); printf("%d", block.getPos().z);
+	block.randomizeShape();
+	if (board.getScore() >= 1000) {
+		board.buyItem(1000);
+		item = new AttackItemScatter();
+		this->useItem();
+	}
+}

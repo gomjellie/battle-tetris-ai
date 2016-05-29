@@ -21,7 +21,10 @@ public:
 	void gravity(int _y);
 	void writeBlockOnBoard(Block &block);
 	void eraseBlockOffBoard(Block &block);
-
+	void showScore(char buf[]);
+	void showMessage(char _message[]);
+	unsigned int getScore() const ;
+	unsigned int buyItem(unsigned int _price);
 
 	enum boardEnum
 	{
@@ -33,6 +36,7 @@ public:
 
 private:
 	int boardArr[Y_LEN][X_LEN];
+	int idx;
 	unsigned int score;
 	Pos startPos;
 

@@ -13,7 +13,7 @@ Board::Board() {
 		}
 	}
 	startPos.x = 1, startPos.y = 1;
-	score = 0;
+	score = 0; idx = 0;
 	setConsoleSize(GetStdHandle(STD_OUTPUT_HANDLE), 160, 40);
 	cursorInvisible();
 }
@@ -91,7 +91,7 @@ void Board::eraseBlockOffBoard(Block &block) {
 void Board::clearLine() {
 
 	int checkLine = 0;// f means field
-	char tmp[32] = { 0, };
+	char buf[32] = { 0, };
 	for (int y = Y_LEN - 2; y > 1; y--) {
 		for (int x = 1; x < X_LEN - 1; x++) {
 			if (boardArr[y][x] != EMPTY) {
@@ -105,7 +105,7 @@ void Board::clearLine() {
 			gravity(y); 
 			score += 100;
 
-			printXY(startPos.x + 16, startPos.y + 9, _itoa(score, tmp, 10), CC_RED);
+			showScore(buf);
 			//debugMonitor(100, score);
 			clearLine();
 		}
@@ -114,10 +114,42 @@ void Board::clearLine() {
 	}
 }
 
+void Board::showScore(char buf[]) {
+	printXY(startPos.x + 16, startPos.y + 9, "       ", CC_RED);
+	printXY(startPos.x + 16, startPos.y + 9, _itoa(score, buf, 10), CC_RED);
+}
+
 void Board::gravity(int _y) {
 	for (; _y > 2; _y--) {
 		for (int x = 1; x < X_LEN - 1; x++) {
 			boardArr[_y][x] = boardArr[_y - 1][x];
 		}
+	}
+}
+
+unsigned int Board::getScore() const {
+	return score;
+}
+
+unsigned int Board::buyItem(unsigned int _price) {//이게 보드에 있는거 자체가 좀 에러긴 한데 고칠라면 다뜯어고쳐야 되니까 그냥 두자 ㅋㅋㅋㅋ
+	if (score >= _price) {
+		char buf[32] = { 0, };
+		score -= _price;
+		this->showScore(buf);
+		return 1;
+	}
+	else {
+		this->showMessage("can't buy");
+		return 0;
+	}
+}
+
+void Board::showMessage(char _message[]) {
+	printXY(startPos.x + 16, startPos.y + 10 + idx++, _message, CC_DARKMAGENTA);
+	if (idx > 10) {
+		for (int i = 0; i <= 10; i++) {
+			printXY(startPos.x + 16, startPos.y + 10 + i, "               ", CC_DARKMAGENTA);
+		}
+		idx = 0;
 	}
 }
