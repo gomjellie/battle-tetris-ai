@@ -1,2 +1,9 @@
-﻿  main.cpp
+﻿  Controller.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Item.cpp
+  AttackItemScatter.cpp
+  AttackItemChangeBoard.cpp
+  AiController.cpp
   cppTetrisExtendedAI.vcxproj -> C:\Users\gomjellie\Documents\GitHub\cppTetrisExtendedAI\cppTetrisExtendedAI\Debug\cppTetrisExtendedAI.exe

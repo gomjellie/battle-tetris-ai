@@ -21,6 +21,7 @@ public:
 	int getMinusPoint();
 	int nxt;
 	void stack();//overrided
+	void pause();//overrided
 
 private:
 	PosAi targetPos;

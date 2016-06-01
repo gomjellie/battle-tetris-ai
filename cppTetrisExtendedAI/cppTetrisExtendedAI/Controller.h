@@ -26,7 +26,10 @@ public:
 	bool isDefensing();
 	Block* getBlock() {return &this->block;};
 	Board* getBoard() {return &this->board;};
-
+	void pause();
+	void setPause(bool _bool) {
+		bPause = _bool;
+	}
 	//static void gotoXY(unsigned short _x, unsigned short _y);
 
 protected:
@@ -40,6 +43,8 @@ protected:
 	unsigned int speed;
 	int itemDefensing;
 	int key;
+
+	bool bPause;
 
 	enum controllerEnum
 	{

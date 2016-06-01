@@ -5,6 +5,7 @@ Controller::Controller() : block(), board(), ghost(this->block, this->board) {
 	timeCnt = 0;
 	speed = 50;
 	itemDefensing = 0;
+	bPause = false;
 	board.setBoardStart(2, 10);
 	block.setCoordStartPos(2, 10);
 	ghost.setStartPos(2, 10);
@@ -65,6 +66,10 @@ void Controller::playGame() {
 				this->useItem();
 			}
 			//item->action(this, opposite);
+			break;
+		case 'p':
+			opposite->setPause(true);
+			pause();
 			break;
 		default:
 			break;
@@ -141,4 +146,10 @@ bool Controller::isDefensing() {//if defensing returns true else if it's not def
 	else {
 		return false;
 	}
+}
+
+void Controller::pause() {
+	while (_getch() != 'r') {
+	}
+	opposite->setPause(false);
 }

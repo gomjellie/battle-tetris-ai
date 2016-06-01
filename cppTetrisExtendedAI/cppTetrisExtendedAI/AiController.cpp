@@ -14,13 +14,11 @@ AiController::AiController() {
 void AiController::playGame() {
 	block.randomizeShape();
 	while (key != QUIT) {
-		//timeControl(); //key입력받는게 들어있음
-		//어차피 키입력 안받으니까 없앰 시간제어도 안함
-		/*if ( board.getScore() >=1000) {
-			board.buyItem(1000);
-			item = new AttackItemScatter();
-			this->useItem();
-		}*/
+		
+		if (bPause == true) {
+			pause();
+		}
+
 		targetPos = findIdealPosition();
 		moveToBestPos();
 
@@ -253,4 +251,8 @@ void AiController::stack() {//Overrided Func contains changeShape, writeBlockOnB
 		item = new AttackItemScatter();
 		this->useItem();
 	}
+}
+
+void AiController::pause() {
+	while (bPause == true) {};
 }
