@@ -27,6 +27,8 @@ how to run this software :find .sln file and open -> ctrl + F5  OR find .exe fil
 
 - 아이템 추가(1번키 누르면 상대방 다음 블록이 안좋은 모양으로 바뀜)
 
+- 아이템 추가(2번키 누르면 상대방과 보드를 바꾼다)
+
 
 
 
@@ -52,9 +54,11 @@ status now
 
 - Item added ( press keyboard button 1 -> change opposite player's next block(8thblock) )
 
+- Item BoardSwap ( press keyboard 2 -> swap board )
+
 추가할 기능
 
-- 아이템 클래스
+- 아이템 클래스들
 
 
 
