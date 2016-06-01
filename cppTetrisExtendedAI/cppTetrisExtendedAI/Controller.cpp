@@ -34,6 +34,7 @@ void Controller::playGame() {
 
 		switch (key)
 		{
+
 		case RIGHT:
 			block.moveRight();
 			if (collision())
@@ -60,13 +61,23 @@ void Controller::playGame() {
 				block.moveDown();
 			}stack();
 			break;
+
+
 		case KEY_1:
-			if (board.buyItem(1000)) {
+			if (board.buyItem(10)) {
 				item = new AttackItemScatter();
 				this->useItem();
 			}
 			//item->action(this, opposite);
 			break;
+
+		case KEY_2:
+			if (board.buyItem(10)) {
+				item = new AttackItemChangeBoard();
+				this->useItem();
+			}
+			break;
+
 		case 'p':
 			opposite->setPause(true);
 			pause();
@@ -135,6 +146,7 @@ void Controller::useItem() {// it also checks whether item points null && opposi
 			this->opposite->board.showMessage("Attacked");//show away player that he's attacked
 			this->board.showMessage("attack succeed");//show player that he's succed at attacking
 		}
+		delete[] item;
 		this->item = nullptr;
 	}
 }
@@ -149,7 +161,9 @@ bool Controller::isDefensing() {//if defensing returns true else if it's not def
 }
 
 void Controller::pause() {
+	this->bPause = true;
 	while (_getch() != 'r') {
+		if (bPause == false)break;
 	}
 	opposite->setPause(false);
 }

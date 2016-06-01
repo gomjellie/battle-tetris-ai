@@ -255,4 +255,5 @@ void AiController::stack() {//Overrided Func contains changeShape, writeBlockOnB
 
 void AiController::pause() {
 	while (bPause == true) {};
+	opposite->setPause(false);
 }

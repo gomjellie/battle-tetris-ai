@@ -145,7 +145,7 @@ unsigned int Board::buyItem(unsigned int _price) {//이게 보드에 있는거 자체가 좀
 }
 
 void Board::showMessage(char _message[]) {
-	printXY(startPos.x + 16, startPos.y + 10 + idx++, _message, CC_DARKMAGENTA);
+	printXY(startPos.x + 16, startPos.y + 10 + idx++, _message, CC_MAGENTA);
 	if (idx > 10) {
 		for (int i = 0; i <= 10; i++) {
 			printXY(startPos.x + 16, startPos.y + 10 + i, "               ", CC_DARKMAGENTA);

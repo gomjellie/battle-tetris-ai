@@ -23,7 +23,7 @@ public:
 	void randomizeShape();
 	int getBlock(int _y, int _x) const;
 	Pos getPos() const;
-	int getBlockShape(int _z,int _y, int _x) const;
+	int getBlockShape(int _z, int _y, int _x) const;
 	void setPosX(int _x);
 	void setPosY(int _y);
 	void setPosZ(int _z);
@@ -37,7 +37,7 @@ private:
 	Pos blockPos;
 	COORD coordStartPos;
 	int blockArr[4][4];
-	const int blockShapeArr[8][4][4] = {
+	const int blockShapeArr[9][4][4] = {
 		{
 			{ 0,0,1,0 },
 			{ 0,0,1,0 },
@@ -86,6 +86,12 @@ private:
 			{ 0,8,0,8 },
 			{ 8,0,8,0 },
 		},
+		{
+			{ 0,0,0,1 },
+			{ 1,0,1,0 },
+			{ 0,1,0,0 },
+			{ 1,0,0,0 }
+		}
 	};
 };
 

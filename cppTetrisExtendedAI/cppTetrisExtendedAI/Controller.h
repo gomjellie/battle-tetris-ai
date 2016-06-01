@@ -5,6 +5,7 @@
 #include "Ghost.h"
 #include "Item.h"
 #include "AttackItemScatter.h"
+#include "AttackItemChangeBoard.h"
 
 //#include <Windows.h>
 #include <cstdlib>
