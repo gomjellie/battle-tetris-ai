@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "Ghost.h"
 #include "Item.h"
+#include "Helper.h"
 #include "AttackItemScatter.h"
 #include "AttackItemChangeBoard.h"
 
@@ -37,6 +38,8 @@ protected:
 	Block block;
 	Board board;
 	Ghost ghost;
+	Helper helper;
+	
 	Controller* opposite;
 	Item* item = nullptr;
 	

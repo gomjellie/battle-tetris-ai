@@ -16,6 +16,7 @@ void Controller::gameInit(unsigned int seed) {
 	srand(seed);
 	board.drawBoarder();
 	block.changeShape();
+	helper.showHotKeys();
 	//Sound::playNyanNyanSong();
 }
 
@@ -64,7 +65,7 @@ void Controller::playGame() {
 
 
 		case KEY_1:
-			if (board.buyItem(10)) {
+			if (board.buyItem(200)) {
 				item = new AttackItemScatter();
 				this->useItem();
 			}
@@ -72,7 +73,7 @@ void Controller::playGame() {
 			break;
 
 		case KEY_2:
-			if (board.buyItem(10)) {
+			if (board.buyItem(3000)) {
 				item = new AttackItemChangeBoard();
 				this->useItem();
 			}
@@ -126,7 +127,8 @@ void Controller::timeControl() {// controls time but I think it's not good way
 			scanKey(); timeCnt += 10; break;
 		}
 		else {
-			Sleep(1); timeCnt++;
+			Sleep(1); 
+			timeCnt++;
 		}
 		if (timeCnt > speed) {
 			timeCnt = 0; key = DOWN; break;

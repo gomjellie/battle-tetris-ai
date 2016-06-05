@@ -246,8 +246,8 @@ void AiController::stack() {//Overrided Func contains changeShape, writeBlockOnB
 	board.clearLine();
 	//board.gotoXY(13, 13); printf("%d", block.getPos().z);
 	block.randomizeShape();
-	if (board.getScore() >= 1000) {
-		board.buyItem(1000);
+	if (board.getScore() >= 2000) {
+		board.buyItem(2000);
 		item = new AttackItemScatter();
 		this->useItem();
 	}

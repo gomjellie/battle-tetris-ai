@@ -150,6 +150,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Ghost.h" />
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Sound.h" />
