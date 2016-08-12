@@ -27,6 +27,7 @@ int wmain(void) {
 		comController.gameInit((unsigned int)time(NULL) ^ 0b101010101);
 		comController.playGame();
 	});
+
 	std::thread humanThread([&]() {
 		humController.setOpposite(&comController);
 		humController.gameInit((unsigned int)time(NULL) ^ 0b11111111);
