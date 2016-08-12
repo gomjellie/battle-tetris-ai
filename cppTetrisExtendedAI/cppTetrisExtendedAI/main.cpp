@@ -11,6 +11,7 @@ gomjellie@naver.com
 https://github.com/gomjellie
 License follows MIT License
 2016년 5월 오인규에 의해 작성됨
+*/
 
 #include <thread>
 
