@@ -2,10 +2,12 @@
 
 Human vs Artificial Inteligence game runs on windows
 
-how to run this software :find .sln file and open -> ctrl + F5  OR find .exe file and double click
-
-
-2016 0522 cppTetrisExtendedAI
+#how to run this software 
+```js
+ 1. find .sln file
+ 2. open it 
+ 3. press `ctrl + F5`  OR `double click .exe`
+```
 
 #현재 지원 기능 
 
