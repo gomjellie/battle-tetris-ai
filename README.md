@@ -56,9 +56,9 @@ Human vs Artificial Inteligence game runs on windows
 
 - game ends when it die (dirty way)
 
-- Item added ( press keyboard button 1 -> change opposite player's next block(8thblock) )
+- Item added ( press keyboard button 1 >> change opposite player's next block(8thblock) )
 
-- Item BoardSwap ( press keyboard 2 -> swap board )
+- Item BoardSwap ( press keyboard 2 >> swap board )
 
 ```
 
