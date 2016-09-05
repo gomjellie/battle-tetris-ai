@@ -7,8 +7,9 @@ how to run this software :find .sln file and open -> ctrl + F5  OR find .exe fil
 
 2016 0522 cppTetrisExtendedAI
 
-현재 지원 기능 
+#현재 지원 기능 
 
+```js
 - 블록별 색깔 설정
 
 - 음악재생(냔캣) 
@@ -29,13 +30,14 @@ how to run this software :find .sln file and open -> ctrl + F5  OR find .exe fil
 
 - 아이템 추가(2번키 누르면 상대방과 보드를 바꾼다)
 
+```
 
 
 
 
+#current status
 
-status now
-
+```js
 - block color
 
 - play music(nyan cat) 
@@ -56,14 +58,14 @@ status now
 
 - Item BoardSwap ( press keyboard 2 -> swap board )
 
-추가할 기능
+```
 
-- 아이템 클래스들
+#추가할 기능
+
+- `아이템 클래스들`
 
 
+# TODO::
 
-
-TODO::
-
-- make item class 
+- make `item class`
 
