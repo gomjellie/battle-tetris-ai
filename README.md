@@ -1,6 +1,6 @@
-# cppTetrisExtendedAI
+﻿# cppTetrisExtendedAI
 
-Human vs Artificial Inteligence game runs on windows
+>Human vs Artificial Inteligence game runs on windows
 
 #how to run this software 
 ```js
